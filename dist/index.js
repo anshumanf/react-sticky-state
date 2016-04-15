@@ -549,7 +549,7 @@ var Sticky = function (_Component) {
   }, {
     key: 'canSticky',
     get: function get() {
-      return stickyNative();
+      return this.props.forcePolyfill ? false: stickyNative();
     }
   }]);
 
@@ -563,6 +563,7 @@ Sticky.propTypes = {
   stateClass: _react2.default.PropTypes.string,
   disabledClass: _react2.default.PropTypes.string,
   absoluteClass: _react2.default.PropTypes.string,
+  forcePolyfill: _react2.default.PropTypes.bool,
   disabled: _react2.default.PropTypes.bool,
   debug: _react2.default.PropTypes.bool,
   tagName: _react2.default.PropTypes.string
@@ -574,6 +575,7 @@ Sticky.defaultProps = {
   stateClass: 'is-sticky',
   disabledClass: 'sticky-disabled',
   absoluteClass: 'is-absolute',
+  forcePolyfill: false,
   debug: false,
   disabled: false,
   tagName: 'div'

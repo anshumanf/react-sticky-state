@@ -98,6 +98,7 @@ export default class Sticky extends Component {
     stateClass:  React.PropTypes.string,
     disabledClass:  React.PropTypes.string,
     absoluteClass:  React.PropTypes.string,
+    forcePolyfill: React.PropTypes.bool,
     disabled: React.PropTypes.bool,
     debug: React.PropTypes.bool,
     tagName: React.PropTypes.string
@@ -110,6 +111,7 @@ export default class Sticky extends Component {
     stateClass: 'is-sticky',
     disabledClass: 'sticky-disabled',
     absoluteClass: 'is-absolute',
+    forcePolyfill: false,
     debug: false,
     disabled: false,
     tagName: 'div'
@@ -154,7 +156,7 @@ export default class Sticky extends Component {
   }
 
   get canSticky() {
-    return stickyNative();
+    return this.props.forcePolyfill ? false: stickyNative();
   }
 
   getBoundingClientRect() {
